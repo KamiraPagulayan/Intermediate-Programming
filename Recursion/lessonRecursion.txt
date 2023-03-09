@@ -1,0 +1,36 @@
+package recursion;
+import java.util.Scanner;
+
+public class lessonRecursion {
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		
+		//inputs user
+		int maxNumber =15;
+		System.out.println("Fibonacci series of " + maxNumber);
+		
+		System.out.print("Input First number: "); //prints the first number entered by the user
+		int M= s.nextInt();
+		
+		System.out.print("Input Second number: "); //prints the second number entered by the user
+		int N= s.nextInt();
+		
+		//prints the number entered by the user
+		for (int i=1; i<maxNumber; i++) {
+			System.out.print(fiboRecur(i)+ " ");
+		}
+	} 
+	
+	public static int fiboRecur(int n) {
+		//condition that will return the variable
+		if (n==0) {
+			return n;	
+		}
+		if (n==1|| n==2) {
+			return n;
+		}
+		return fiboRecur(n-2) + fiboRecur(n-1);
+		
+	}
+}
