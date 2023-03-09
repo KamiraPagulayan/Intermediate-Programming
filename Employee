@@ -1,0 +1,68 @@
+public class Employee {
+	// Declaration of Employee attributes
+	String ID;
+	String firstName;
+	String lastName;
+	double salary;
+	
+	public Employee(String ID, String firstName, String lastName, double salary) { // constructor class
+		this.ID = ID;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.salary = salary;
+	}
+	
+	public String getID() {
+		return ID; // returns ID of employee
+	}
+	
+	public String getName() {
+		return getFirstName() + " " + getLastName(); // returns full name of employee
+	}
+	
+	public String getFirstName() {
+		return firstName; // return first name of employee
+	}
+	
+	public String getLastName() {
+		return lastName; // returns last name of employee
+	}
+	
+	public double getSalary() {
+		return salary; // returns salary of employee
+	}
+	
+	public double getAnnualSalary() {
+		return salary * 12; // returns annual salary of employee by multiplying employee's salary by 12
+	}
+	
+	public void setSalary(double salary) {
+		this.salary = salary; // modifies salary of employee equal to passed argument on method invocation
+	}
+	
+	public void raiseSalary(double percent) {
+		this.salary *= (1 + percent); // raises the salary of the employee equal to passed percentage on method invocation
+	}
+	
+	public static void main(String[] args) {
+		// Instantiate Employee objects with their respective attributes
+		Employee Employee1 = new Employee("20-10298", null, null, 0);
+		Employee Employee2 = new Employee(null, "Cassandra", "Lopez", 0);
+		
+		System.out.println("Employee ID: " + Employee1.getID()); // get ID of Employee1
+		System.out.println("Employee name: " + Employee2.getName()); // get Name of Employee2
+		
+		Employee1.setSalary(25000.00); // sets salary of Employee1 to 25000.00
+		Employee2.setSalary(30000.00); // sets salary of Employee2 to 30000.00
+		
+		System.out.printf("Salary: %.2f\n", Employee1.getSalary()); // get Salary of Employee1
+		System.out.printf("Salary: %.2f\n", Employee2.getSalary()); // get Salary of Employee2
+		
+		Employee1.raiseSalary(0.15); // raise salary of Employee1 by 15%
+		Employee2.raiseSalary(0.10); // raise salary of Employee2 by 10%
+		
+		System.out.printf("Annual Salary: %.2f\n", Employee1.getAnnualSalary()); // get Annual Salary of Employee1
+		System.out.printf("Annual Salary: %.2f\n", Employee2.getAnnualSalary()); // get Annual Salary of Employee2
+		
+	}
+}
