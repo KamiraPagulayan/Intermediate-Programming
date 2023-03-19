@@ -1,0 +1,104 @@
+package Login;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.print.attribute.standard.JobOriginatingUserName;
+import javax.swing.JButton;
+import javax.swing.JPasswordField;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class loginInterface {
+
+	private JFrame frame;
+	private JTextField textField;
+	private JPasswordField passwordField;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					loginInterface window = new loginInterface();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public loginInterface() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 448, 266);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+//USERNAME Label
+		JLabel lblNewLabel = new JLabel("USERNAME:");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel.setBounds(97, 63, 73, 16);
+		frame.getContentPane().add(lblNewLabel);
+//PASSWORD Label
+		JLabel lblPassword = new JLabel("PASSWORD:");
+		lblPassword.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblPassword.setBounds(91, 106, 79, 16);
+		frame.getContentPane().add(lblPassword);
+//Text Field to accept user input
+		textField = new JTextField();
+		textField.setBounds(206, 62, 121, 20);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+//Password Field to accept user input
+		passwordField = new JPasswordField();
+		passwordField.setBounds(206, 105, 121, 20);
+		frame.getContentPane().add(passwordField);
+//Log in button
+		JButton btnNewButton = new JButton("Login");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				String username=textField.getText();
+				String password=passwordField.getText();
+/* When button is Clicked
+ * if username and password are matched, it shall show a Message Dialog Box saying "SUCCESSFULLY LOGIN" and proceed to the next frame.
+ * if username is correct and password is incorrect, it shall show a Message Dialog Box saying "INCORRECT PASSWORD".
+ * if username is incorrect and password is correct, it shall show a Message Dialog Box saying "INCORRECT STUDENT USERNAME".
+ * if both username and password is incorrect, it shall show a Message Dialog Box saying "INCORRECT USERNAME and PASSWORD".
+ */
+				if (username.equals("Student-01") && password.equals("Finals123")) {
+					welcome w= new welcome();
+					JOptionPane.showMessageDialog(null, "SUCCESSFULLY LOGIN");
+					w.Welcome();
+					loginInterface.this.frame.setVisible(false);
+				}else if (username.equals(null) || password.equals("Finals123")){
+					JOptionPane.showMessageDialog(null, "INCORRECT STUDENT USERNAME");
+				}else if (username.equals("Student-01") || password.equals(null)){
+					JOptionPane.showMessageDialog(null, "INCORRECT PASSWORD");
+				}else {
+					JOptionPane.showMessageDialog(null, "INCORRECT USERNAME and PASSWORD");
+				}
+			}
+		});
+		btnNewButton.setBounds(206, 153, 89, 23);
+		frame.getContentPane().add(btnNewButton);
+	}
+}
